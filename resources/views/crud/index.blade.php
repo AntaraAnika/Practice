@@ -7,8 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" >
 </head>
 <body>
+
+@if(session('update') != null)
+    <h3>{{ session('update') }}</h3>
+@endif
 
     <table id="example" class="display" style="width:100%">
         <thead>
@@ -48,7 +54,22 @@
                 </td>
             </tr>
         @endforeach
+        </tbody>
+    </table>
+
+<div class="d-flex justify-content-center">
+    {{ $books->links() }} </div>
 
 
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js">
+    </script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js">
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
 </body>
 </html>

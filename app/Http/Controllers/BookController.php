@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class BookController extends Controller
 {
     public function index(){
-        $books = Book::all();
+        $books = Book::paginate(1);
         return view('crud.index', compact('books'));
     }
 
@@ -53,6 +53,10 @@ class BookController extends Controller
         }
 
         $book->update($inputs);
+         session()->flash('update','Updated successfuly');
+//        session()->put('update','Updated successfuly');
+//        session()->forget('ahdfbcd');
+
         return redirect()->route('book.index');
     }
 

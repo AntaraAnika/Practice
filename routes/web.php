@@ -84,10 +84,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
-Route::middleware('auth')->group(function (){
+Route::middleware('user')->group(function (){
 
     Route::get('/test', function (){
-        return \auth()->user();
+        return "abcd";
     });
 });
 
@@ -101,3 +101,5 @@ Route::delete('delete/{id}',[BookController::class,'delete'])->name('book.delete
 
 Route::get('edit/{book}', [BookController::class,'edit'])->name('book.edit');
 Route::put('edit/{id}/update', [BookController::class,'update'])->name('book.update');
+
+Route::resource('test', 'TestController');
