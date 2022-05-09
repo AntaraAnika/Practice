@@ -92,14 +92,83 @@ Route::middleware('user')->group(function (){
 });
 
 //////////Crud/////////
-Route::get('index', [BookController::class,'index'])->name('book.index');
-Route::get('create', [BookController::class,'create']);
-Route::post('createData', [BookController::class,'store'])->name('book.store');
+//Route::get('index', [BookController::class,'index'])->name('book.index');
+//Route::get('create', [BookController::class,'create']);
+//Route::post('createData', [BookController::class,'store'])->name('book.store');
+//
+//
+//Route::delete('delete/{id}',[BookController::class,'delete'])->name('book.delete');
+//
+//Route::get('edit/{book}', [BookController::class,'edit'])->name('book.edit');
+//Route::put('edit/{id}/update', [BookController::class,'update'])->name('book.update');
+//
+//Route::resource('test', 'TestController');
+
+//Relation
+//Route::get('create', function (){
+//    $user = \App\Models\User::first();
+//
+//    $user->post()->create([
+//        'title' => 'hi'
+//    ]);
+//});
+// Route::get('select', function (){
+//     $user = \App\Models\User::first();
+//     $user = \App\Models\User::whereId(1)->get();
+//     return $user;
+//
+////     foreach ($user->post as $posts){
+////         return $posts;
+////     }
+// });
+//
+//Route::get('update', function (){
+//    $user = \App\Models\User::first();
+//    return $user->post()->whereId(1)->update([
+//        'title'=>'dddd'
+//    ]);
+//});
+//
+//Route::get('delete', function (){
+//    $post = \App\Models\Post::first();
+//    return $user->post()->whereId(1)->delete();
+//});
+////relationship
 
 
-Route::delete('delete/{id}',[BookController::class,'delete'])->name('book.delete');
+Route::get('create', function (){
+    $user = \App\Models\User::first();
 
-Route::get('edit/{book}', [BookController::class,'edit'])->name('book.edit');
-Route::put('edit/{id}/update', [BookController::class,'update'])->name('book.update');
+    $user->post()->create([
+        'title'=> 'new Title'
+    ]);
 
-Route::resource('test', 'TestController');
+});
+
+
+Route::get('read', function (){
+
+    $user = \App\Models\User::first();
+    $user = \App\Models\User::whereId(1)->get();
+    return $user;
+});
+
+Route::get('update', function (){
+    $user = \App\Models\User::first();
+    return $user->post()->whereId(5)->update([
+        'title' => 'more neeeeew'
+    ]);
+});
+
+Route::get('delete',function (){
+    $user = \App\Models\User::first();
+   return $user->post()->whereId(3)->delete();
+});
+
+Route::get('posts', function (){
+    $user = \App\Models\User::first();
+    $user = \App\Models\User::whereId(1)->get();
+    return $user;
+
+
+});
